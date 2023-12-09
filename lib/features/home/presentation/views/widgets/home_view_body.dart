@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ny_times_most_popular_articles/core/resources/values_manager.dart';
-import 'package:ny_times_most_popular_articles/features/home/views/widgets/article_item.dart';
+
+import 'article_item.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);

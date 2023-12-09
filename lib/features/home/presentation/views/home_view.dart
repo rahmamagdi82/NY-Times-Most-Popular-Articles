@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ny_times_most_popular_articles/features/home/views/widgets/home_view_body.dart';
+import 'package:ny_times_most_popular_articles/features/home/presentation/views/widgets/home_view_body.dart';
 
-import '../../../core/widgets/custom_app_bar.dart';
+import '../../../../core/widgets/custom_app_bar.dart';
+
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
