@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ny_times_most_popular_articles/core/resources/color_manager.dart';
 import 'package:ny_times_most_popular_articles/core/resources/font_manager.dart';
 import 'package:ny_times_most_popular_articles/core/resources/style_manager.dart';
 import 'package:ny_times_most_popular_articles/core/resources/values_manager.dart';
+import 'package:ny_times_most_popular_articles/core/utils/router_manager.dart';
 
 class ArticleItem extends StatelessWidget {
   const ArticleItem({Key? key}) : super(key: key);
@@ -10,7 +12,9 @@ class ArticleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: (){
+        context.push(AppRouter.articleDetailsViewPath);
+      },
       child: Column(
         children: [
           Row(
