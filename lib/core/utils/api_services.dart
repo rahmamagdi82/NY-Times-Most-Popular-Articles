@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:ny_times_most_popular_articles/core/utils/resources/constants.dart';
+
+import '../resources/constants.dart';
 
 class ApiServices{
 
