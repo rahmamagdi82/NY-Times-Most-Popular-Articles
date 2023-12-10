@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<HomeBloc>(
       create: (BuildContext context) => getItInstance<HomeBloc>()..add(GetArticlesEvent()),
       child: Scaffold(
         appBar: customAppBar(

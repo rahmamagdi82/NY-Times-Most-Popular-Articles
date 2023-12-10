@@ -1,13 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:fpdart/fpdart.dart';
-import 'package:hive/hive.dart';
 import 'package:ny_times_most_popular_articles/core/errors/failure.dart';
 import 'package:ny_times_most_popular_articles/core/utils/network_info.dart';
 import 'package:ny_times_most_popular_articles/features/home/data/data_source/remote_data_source.dart';
 import 'package:ny_times_most_popular_articles/features/home/domain/entities/article_entity.dart';
 import 'package:ny_times_most_popular_articles/features/home/domain/repository/repository.dart';
 
-import '../../../../core/resources/constants.dart';
 import '../data_source/local_data_source.dart';
 
 class HomeRepositoryImp extends HomeRepository{
@@ -21,10 +19,8 @@ class HomeRepositoryImp extends HomeRepository{
     try{
       if(await NetworkInfo.isConnected()){
         List<ArticleEntity> result = await homeRemoteDataSource.getArticles();
-        var box = Hive.box<ArticleEntity>(AppConstants.getArticlesBox);
-        box.addAll(result);
+        homeLocalDataSource.storeArticles(result);
         return right(result);
-
       }
       else{
         List<ArticleEntity> result = homeLocalDataSource.getArticles();

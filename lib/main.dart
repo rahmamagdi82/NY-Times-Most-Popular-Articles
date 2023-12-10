@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:ny_times_most_popular_articles/core/utils/router_manager.dart';
-import 'package:ny_times_most_popular_articles/features/home/data/models/article_model.dart';
 import 'package:ny_times_most_popular_articles/features/home/domain/entities/article_entity.dart';
 
 import 'core/resources/constants.dart';
