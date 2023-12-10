@@ -28,7 +28,7 @@ class ArticleModel extends ArticleEntity{
         required this.publishedDate,
         required this.updated,
         required this.byline,
-    }) : super(articleImage: media[0].mediaMetadata[0].url, articleTitle: title, articleByline: byline, articlePublishDate: publishedDate.toString(), articleAbstract: articleModelAbstract, articleSource: source, articleBanner: media[0].mediaMetadata[2].url);
+    }) : super(articleImage: media!.isNotEmpty?media.first.mediaMetadata.first.url:'', articleTitle: title, articleByline: byline, articlePublishDate: publishedDate.toString(), articleAbstract: articleModelAbstract, articleSource: source, articleBanner: media.isNotEmpty?media.first.mediaMetadata.last.url:'');
 
     List<String> perFacet;
     int etaId;
@@ -39,7 +39,7 @@ class ArticleModel extends ArticleEntity{
     int assetId;
     String source;
     String articleModelAbstract;
-    List<Media> media;
+    List<Media>? media;
     String type;
     String title;
     List<String> desFacet;
@@ -52,29 +52,31 @@ class ArticleModel extends ArticleEntity{
     DateTime updated;
     String byline;
 
-    factory ArticleModel.fromJson(Map<dynamic, dynamic> json) => ArticleModel(
-        perFacet: List<String>.from(json["per_facet"].map((x) => x)),
-        etaId: json["eta_id"],
-        subsection: json["subsection"],
-        orgFacet: List<String>.from(json["org_facet"].map((x) => x)),
-        nytdsection: json["nytdsection"],
-        section: json["section"],
-        assetId: json["asset_id"],
-        source: json["source"],
-        articleModelAbstract: json["abstract"],
-        media: List<Media>.from(json["media"].map((x) => Media.fromJson(x))),
-        type: json["type"],
-        title: json["title"],
-        desFacet: List<String>.from(json["des_facet"].map((x) => x)),
-        uri: json["uri"],
-        url: json["url"],
-        adxKeywords: json["adx_keywords"],
-        geoFacet: List<String>.from(json["geo_facet"].map((x) => x)),
-        id: json["id"],
-        publishedDate: json["published_date"],
-        updated: DateTime.parse(json["updated"]),
-        byline: json["byline"],
-    );
+    factory ArticleModel.fromJson(Map<dynamic, dynamic> json) {
+        return ArticleModel(
+            perFacet: List<String>.from(json["per_facet"].map((x) => x)),
+            etaId: json["eta_id"],
+            subsection: json["subsection"],
+            orgFacet: List<String>.from(json["org_facet"].map((x) => x)),
+            nytdsection: json["nytdsection"],
+            section: json["section"],
+            assetId: json["asset_id"],
+            source: json["source"],
+            articleModelAbstract: json["abstract"],
+            media: List<Media>.from(json["media"].map((x) => Media.fromJson(x))),
+            type: json["type"],
+            title: json["title"],
+            desFacet: List<String>.from(json["des_facet"].map((x) => x)),
+            uri: json["uri"],
+            url: json["url"],
+            adxKeywords: json["adx_keywords"],
+            geoFacet: List<String>.from(json["geo_facet"].map((x) => x)),
+            id: json["id"],
+            publishedDate: json["published_date"],
+            updated: DateTime.parse(json["updated"]),
+            byline: json["byline"],
+        );
+    }
 }
 
 class Media {
@@ -90,7 +92,7 @@ class Media {
     String copyright;
     List<MediaMetadatum> mediaMetadata;
     String subtype;
-    String caption;
+    String? caption;
     String type;
     int approvedForSyndication;
 
@@ -98,7 +100,7 @@ class Media {
         copyright: json["copyright"],
         mediaMetadata: List<MediaMetadatum>.from(json["media-metadata"].map((x) => MediaMetadatum.fromJson(x))),
         subtype: json["subtype"],
-        caption: json["caption"],
+        caption: json["caption"]?? '',
         type: json["type"],
         approvedForSyndication: json["approved_for_syndication"],
     );

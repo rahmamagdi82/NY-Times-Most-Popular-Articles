@@ -5,24 +5,26 @@ import 'package:ny_times_most_popular_articles/core/resources/font_manager.dart'
 import 'package:ny_times_most_popular_articles/core/resources/style_manager.dart';
 import 'package:ny_times_most_popular_articles/core/resources/values_manager.dart';
 import 'package:ny_times_most_popular_articles/core/utils/router_manager.dart';
+import 'package:ny_times_most_popular_articles/features/home/domain/entities/article_entity.dart';
 
 class ArticleItem extends StatelessWidget {
-  const ArticleItem({Key? key}) : super(key: key);
+  const ArticleItem({Key? key, required this.article}) : super(key: key);
+  final ArticleEntity article;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        context.push(AppRouter.articleDetailsViewPath);
+        context.push(AppRouter.articleDetailsViewPath,extra: article);
       },
       child: Column(
         children: [
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: AppSize.s35,
-                backgroundImage: NetworkImage('https://static01.nyt.com/images/2023/11/30/well/30Well-Protein-Age/30Well-Protein-Age-thumbStandard.jpg'),
+                backgroundImage: NetworkImage(article.articleImage),
               ),
               const SizedBox(width: AppSize.s15,),
               Expanded(
@@ -30,10 +32,10 @@ class ArticleItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('The Children',
+                    Text(article.articleTitle,
                     maxLines: 2,overflow: TextOverflow.ellipsis,style: FontStyles.getSemiBoldStyle(fontSize: FontSize.s16),),
                     const SizedBox(height: AppSize.s10,),
-                    Text('By Mona Ahmed',maxLines: 2,overflow: TextOverflow.ellipsis,style: FontStyles.getMediumStyle().copyWith(color: ColorManager.darkGray),),
+                    Text(article.articleByline,maxLines: 2,overflow: TextOverflow.ellipsis,style: FontStyles.getMediumStyle().copyWith(color: ColorManager.darkGray),),
                   ],
                 ),
               ),
@@ -48,7 +50,7 @@ class ArticleItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(Icons.calendar_today,color: ColorManager.darkGray,),
-                Text('2022-8-6',style: FontStyles.getMediumStyle(fontSize: FontSize.s16).copyWith(color: ColorManager.darkGray,),),
+                Text(article.articlePublishDate,style: FontStyles.getMediumStyle(fontSize: FontSize.s16).copyWith(color: ColorManager.darkGray,),),
                 const SizedBox(width: AppSize.s50,),
               ],
             ),

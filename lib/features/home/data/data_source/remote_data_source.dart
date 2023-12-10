@@ -11,7 +11,7 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource{
 
   HomeRemoteDataSourceImp({required this.apiServices});
 
-  final String getArticlesEndPoint = '/viewed/{period}.json';
+  final String getArticlesEndPoint = '/viewed/7.json?api-key=nHhlPTRufjGYWnU0WfbSVT7hT1GTgBof';
 
   @override
   Future<List<ArticleModel>> getArticles() async {

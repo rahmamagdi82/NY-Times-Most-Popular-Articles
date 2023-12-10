@@ -1,3 +1,3 @@
 class AppConstants {
-  static const String baseUrl="https://www.googleapis.com/books/v1/";
+  static const String baseUrl="https://api.nytimes.com/svc/mostpopular/v2";
 }

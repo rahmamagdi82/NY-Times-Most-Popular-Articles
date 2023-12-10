@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ny_times_most_popular_articles/core/utils/router_manager.dart';
 
-void main() {
+import 'core/utils/dependancy_injection.dart';
+
+Future<void> main() async {
+  await initAppModule();
   runApp(const MyApp());
 }
 
