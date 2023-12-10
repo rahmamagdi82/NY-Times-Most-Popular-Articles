@@ -8,8 +8,9 @@ Most Popular Articles shows a list of articles, that shows details when items on
 - Show details of each article.
 
 ## Screenshots
+
 <div>
-<img src="https://github.com/rahmamagdi82/NY-Times-Most-Popular-Articles/issues/1#issue-2034389229">
+<img src="https://github.com/rahmamagdi82/NY-Times-Most-Popular-Articles/assets/98878812/cf4a8b0f-46f3-4efc-a278-f0d1926e5dd0">
 <img src="https://github.com/rahmamagdi82/NY-Times-Most-Popular-Articles/issues/2#issue-2034389457">
 </div>
 
