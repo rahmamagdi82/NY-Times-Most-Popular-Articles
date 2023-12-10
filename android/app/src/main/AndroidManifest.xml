@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ny_times_most_popular_articles"
+        android:label="Most Popular Articles"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

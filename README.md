@@ -1,7 +1,7 @@
 # Most Popular Articles
 
 ## Description
-Most Popular Articles shows a list of articles, that shows details when items on the list are tapped.
+The App shows a list of articles, that shows details when items on the list are tapped.
 
 ## Features
 - Show list of most popular articles.
@@ -22,13 +22,10 @@ Follow these instructions to set up and run the app on your local machine.
 - Android Studio / Xcode: Install the respective IDE for Android or iOS development.
 
 ### Installation
-1. Clone the repository: `git clone <repository-url>`
-2. Navigate to the project directory: `cd flutter_app_name`
+1. Clone the repository: `git clone https://github.com/rahmamagdi82/NY-Times-Most-Popular-Articles.git`
+2. Navigate to the project directory: `cd NY-Times-Most-Popular-Articles`
 3. Install dependencies: `flutter pub get`
 
 ### Running the App
 - Connect your device or start an emulator.
 - Run the app: `flutter run`
-
-## Acknowledgments
-Acknowledge any external libraries, resources, or contributors that you used or referenced in your app.
