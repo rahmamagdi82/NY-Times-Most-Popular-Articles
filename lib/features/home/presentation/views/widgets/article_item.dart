@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ny_times_most_popular_articles/core/resources/color_manager.dart';
@@ -6,6 +7,7 @@ import 'package:ny_times_most_popular_articles/core/resources/style_manager.dart
 import 'package:ny_times_most_popular_articles/core/resources/values_manager.dart';
 import 'package:ny_times_most_popular_articles/core/utils/router_manager.dart';
 import 'package:ny_times_most_popular_articles/features/home/domain/entities/article_entity.dart';
+
 
 class ArticleItem extends StatelessWidget {
   const ArticleItem({Key? key, required this.article}) : super(key: key);
@@ -22,9 +24,19 @@ class ArticleItem extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: AppSize.s35,
-                backgroundImage: NetworkImage(article.articleImage),
+              Container(
+                height: AppSize.s75,
+                width: AppSize.s75,
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                decoration:  const BoxDecoration(
+                  color: Colors.black12,
+                  shape: BoxShape.circle,
+                ),
+                 child: CachedNetworkImage(
+                   fit: BoxFit.fill,
+                    imageUrl: article.articleImage,
+                    errorWidget: (context,str,obj)=> const Icon(Icons.error_outline,color: Colors.red,),
+                  )
               ),
               const SizedBox(width: AppSize.s15,),
               Expanded(

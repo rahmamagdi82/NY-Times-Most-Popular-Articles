@@ -1,6 +1,8 @@
 import 'package:ny_times_most_popular_articles/core/utils/api_services.dart';
 import 'package:ny_times_most_popular_articles/features/home/data/models/article_model.dart';
 
+import '../../../../core/resources/constants.dart';
+
 abstract class HomeRemoteDataSource{
   Future<List<ArticleModel>> getArticles();
 }
@@ -11,7 +13,7 @@ class HomeRemoteDataSourceImp extends HomeRemoteDataSource{
 
   HomeRemoteDataSourceImp({required this.apiServices});
 
-  final String getArticlesEndPoint = '/viewed/7.json?api-key=nHhlPTRufjGYWnU0WfbSVT7hT1GTgBof';
+  final String getArticlesEndPoint = '/viewed/7.json?api-key=${AppConstants.apiKey}';
 
   @override
   Future<List<ArticleModel>> getArticles() async {
