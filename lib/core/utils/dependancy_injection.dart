@@ -1,4 +1,5 @@
 
+import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ny_times_most_popular_articles/features/home/data/data_source/local_data_source.dart';
 import 'package:ny_times_most_popular_articles/features/home/domain/use_cases/get_articles_use_case.dart';
@@ -15,7 +16,7 @@ Future<void> initAppModule() async{
 
 
   // api service
-  getItInstance.registerLazySingleton<ApiServices>(() => ApiServices());
+  getItInstance.registerLazySingleton<ApiServices>(() => ApiServices(dio: Dio()));
 
   // remote data source
   getItInstance.registerLazySingleton<HomeRemoteDataSource>(() => HomeRemoteDataSourceImp(apiServices: getItInstance()));
