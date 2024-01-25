@@ -4,12 +4,12 @@ import '../resources/constants.dart';
 
 class ApiServices{
 
-  final Dio _dio;
+  final Dio dio;
 
-  ApiServices({required Dio dio}) : _dio = dio;
+  ApiServices({required  this.dio});
 
   Future<Map<String,dynamic>> get({required String endPoint}) async {
-    final result = await _dio.get( '${AppConstants.baseUrl}$endPoint');
+    final result = await dio.get( '${AppConstants.baseUrl}$endPoint');
     return result.data;
   }
 }
