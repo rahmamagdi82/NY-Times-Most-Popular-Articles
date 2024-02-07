@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ny_times_most_popular_articles/core/utils/router_manager.dart';
 import 'package:ny_times_most_popular_articles/features/home/domain/entities/article_entity.dart';
@@ -14,7 +16,7 @@ Future<void> main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ArticleEntityAdapter());
   await Hive.openBox<ArticleEntity>(AppConstants.getArticlesBox);
-  runApp(const MyApp());
+  runApp(DevicePreview(enabled: !kReleaseMode,builder: (BuildContext context) =>const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
       theme: ThemeData(useMaterial3: false),
