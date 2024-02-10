@@ -1,4 +1,4 @@
-# NY Times Most Popular Articles
+# NY Times Articles
 
 ## Description
 The App shows a list of articles, that shows details when items on the list are tapped.
